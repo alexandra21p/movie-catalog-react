@@ -1,0 +1,146 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f8f8f8;
+  font-size: 13px;
+  /*height: 100%;*/
+}
+
+
+header {
+    width: 100%;
+    background-color: #e9ecef;
+    padding: 10px 0 30px;
+}
+
+h1 {
+    padding: 30px 280px 20px;
+    font-weight: 100;
+    font-size: 35px;
+    cursor: pointer;
+}
+
+.search-bar {
+    max-width: 70%;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px auto 0;
+}
+
+input.search-input {
+    padding: 10px 15px;
+    font-size: 18px;
+    flex: 7;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: 1px solid #cecece;
+    font-weight: 100;
+    font-family: 'Roboto', sans-serif;
+}
+
+button.search-button {
+    height: 100%;
+    border: none;
+    flex: 1;
+    /*background-color: #868e95;*/
+    background-color: #00838F;
+    color: #fff;
+    border-radius: 0;
+    font-size: 18px;
+    padding: 11px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    cursor: pointer;
+}
+
+button.search-button:hover {
+    background-color: #006064;
+}
+
+
+.main-content {
+    max-width: 70%;
+    height: 100%;
+    margin: 100px auto;
+    border-radius: 5px;
+    /*border: 1px solid #cecece;*/
+    background-color: #f3f3f3;
+    position: relative;
+}
+
+.movie-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 10px 50px;
+}
+
+.movie-container {
+    width: 28%;
+    /*border: 1px solid #00838F;*/
+    text-align: center;
+    background-color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+img.movie-poster {
+    max-width: 380px;
+    max-height: 250px;
+    margin: 20px 0 15px;
+}
+
+.movie-details {
+    width: 80%;
+    margin: 0 auto;
+    padding: 0 30px 10px;
+}
+
+.movie-details h2.movie-title,
+.no-search-result h2 {
+    font-weight: 400;
+    font-size: 18px;
+    color: #314d6b;
+}
+
+.movie-details p {
+    padding: 10px;
+    line-height: 18px;
+    letter-spacing: 0.5px;
+    font-weight: 300;
+    font-size: 13px;
+
+}
+
+.disabled {
+    cursor: default;
+    background-color: inherit;
+}
+
+.no-search-result {
+    width: 400px;
+    margin: 0 auto;
+    text-align: center;
+    /*background-color: lightblue;*/
+}
+
+.no-search-result h2.no-result-message {
+    font-size: 20px;
+    padding: 20px;
+}
+
+.loading {
+    position: absolute;
+
+}
