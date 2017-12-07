@@ -29,37 +29,6 @@ const allMovies = [
         categories: "Horror",
         director: "Scott Derrickson",
     },
-    {
-        title: "Sinister",
-        description: "Washed-up true-crime writer Ellison Oswalt finds a box of super 8 home movies that suggest the murder he is currently researching is the work of a serial killer whose work dates back to the 1960s.",
-        categories: "Horror",
-        director: "Scott Derrickson",
-    },
-    {
-        title: "Sinister",
-        description: "Washed-up true-crime writer Ellison Oswalt finds a box of super 8 home movies that suggest the murder he is currently researching is the work of a serial killer whose work dates back to the 1960s.",
-        categories: "Horror",
-        director: "Scott Derrickson",
-    },
-    {
-        title: "Sinister",
-        description: "Washed-up true-crime writer Ellison Oswalt finds a box of super 8 home movies that suggest the murder he is currently researching is the work of a serial killer whose work dates back to the 1960s.",
-        categories: "Horror",
-        director: "Scott Derrickson",
-    },
-    {
-        title: "Sinister",
-        description: "Washed-up true-crime writer Ellison Oswalt finds a box of super 8 home movies that suggest the murder he is currently researching is the work of a serial killer whose work dates back to the 1960s.",
-        categories: "Horror",
-        director: "Scott Derrickson",
-    },
-    {
-        title: "Sinister",
-        description: "Washed-up true-crime writer Ellison Oswalt finds a box of super 8 home movies that suggest the murder he is currently researching is the work of a serial killer whose work dates back to the 1960s.",
-        categories: "Horror",
-        director: "Scott Derrickson",
-    },
-
 ];
 
 const moreMovies = [

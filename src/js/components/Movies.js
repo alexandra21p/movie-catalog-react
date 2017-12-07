@@ -16,6 +16,17 @@ export default class Movies extends React.Component {
         this.handlePageScroll = this.handlePageScroll.bind( this );
     }
 
+    componentWillMount() {
+        return loadJson( "http://localhost:3030/movies/getAll" )
+            .then( result => {
+                const { payload: movies } = result;
+                this.setState( {
+                    movies,
+                } );
+            } )
+            .catch( err => console.log( err ) );
+    }
+
     componentDidMount() {
         window.addEventListener( "scroll", this.handlePageScroll );
     }
@@ -64,7 +75,7 @@ export default class Movies extends React.Component {
         const { isLoading } = this.state;
 
         if ( ( window.innerHeight + window.pageYOffset ) >=
-        ( document.body.scrollHeight - 450 ) && !isLoading ) {
+        ( document.body.scrollHeight - 500 ) && !isLoading ) {
             const { movies } = this.state;
             const updatedList = movies.concat( moreMovies );
 
@@ -149,4 +160,14 @@ function displayMoviesOnRows( movieList ) {
 
         return <div className="movie-row" key={ `row-${ index }` }>{modifiedMovies}</div>;
     } );
+}
+
+function loadJson( url ) {
+    return fetch( url )
+        .then( response => {
+            if ( response.status === 200 ) {
+                return response.json();
+            }
+            throw new Error( `${ response.status }: ${ response.statusText }` );
+        } );
 }
