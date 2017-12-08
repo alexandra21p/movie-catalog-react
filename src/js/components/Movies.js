@@ -1,23 +1,26 @@
-/* eslint react/no-array-index-key: off */
+/* eslint react/no-array-index-key: off, consistent-return: off */
 import React from "react";
-import { allMovies, moreMovies } from "../movieData";
 import Movie from "./Movie";
+
+const path = "http://localhost:3030/movies";
 
 export default class Movies extends React.Component {
     constructor( props ) {
         super( props );
 
         this.state = {
-            movies: allMovies,
+            movies: [],
             filter: false,
             isLoading: false,
+            searchResults: [],
         };
 
+        this.pageNumber = 0;
         this.handlePageScroll = this.handlePageScroll.bind( this );
     }
 
     componentWillMount() {
-        return loadJson( "http://localhost:3030/movies/getAll" )
+        return loadJson( `${ path }/getBatch/${ this.pageNumber }` )
             .then( result => {
                 const { payload: movies } = result;
                 this.setState( {
@@ -45,18 +48,22 @@ export default class Movies extends React.Component {
 
     filterMovies() {
         const { value } = this.searchInput;
-        const { movies } = this.state;
 
-        const matches = movies.filter( movie => {
-            const { title, description } = movie;
-            return title.toLowerCase().includes( value.toLowerCase() ) ||
-            description.toLowerCase().includes( value.toLowerCase() );
-        } );
+        return loadJson( `${ path }/getAll` )
+            .then( result => {
+                const { payload: movies } = result;
+                const matches = movies.filter( movie => {
+                    const { title, description } = movie;
+                    return title.toLowerCase().includes( value.toLowerCase() ) ||
+                    description.toLowerCase().includes( value.toLowerCase() );
+                } );
 
-        this.setState( {
-            filter: true,
-            searchResults: matches,
-        } );
+                this.setState( {
+                    filter: true,
+                    searchResults: matches,
+                } );
+            } )
+            .catch( err => console.log( err ) );
     }
 
     displayFilteredMovies( ) {
@@ -72,16 +79,26 @@ export default class Movies extends React.Component {
     }
 
     handlePageScroll() {
-        const { isLoading } = this.state;
+        const { isLoading, movies } = this.state;
 
         if ( ( window.innerHeight + window.pageYOffset ) >=
-        ( document.body.scrollHeight - 500 ) && !isLoading ) {
-            const { movies } = this.state;
-            const updatedList = movies.concat( moreMovies );
+        ( document.body.scrollHeight - 800 ) && !isLoading ) {
+            this.pageNumber += 1;
 
-            this.setState( {
-                movies: updatedList,
-            } );
+            return loadJson( `${ path }/getBatch/${ this.pageNumber }` )
+                .then( result => {
+                    const { payload: nextBatch } = result;
+
+                    if ( nextBatch.length === 0 ) {
+                        return;
+                    }
+
+                    const updatedList = movies.concat( nextBatch );
+                    this.setState( {
+                        movies: updatedList,
+                    } );
+                } )
+                .catch( err => console.log( err ) );
         }
     }
 
@@ -90,7 +107,7 @@ export default class Movies extends React.Component {
         return (
             <div>
                 <header>
-                    <h1>IMDB - Wannabe Movie Catalog</h1>
+                    <a href="."><h1>IMDB - Wannabe Movie Catalog</h1></a>
 
                     <div className="search-bar">
                         <input
@@ -140,7 +157,7 @@ function expandArray( array, size ) {
 }
 
 function displayMoviesOnRows( movieList ) {
-    const groupSize = 3;
+    const groupSize = 4;
     const mappedMovies = joinMovies( movieList, groupSize );
 
     return mappedMovies.map( ( movieRow, index ) => {
