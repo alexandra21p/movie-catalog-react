@@ -30,7 +30,7 @@ module.exports = {
     context: path.join( __dirname, "src" ),
     devtool: dev ? "none" : "source-map",
     entry: {
-        app: "./js/App.js",
+        app: "./js/index.js",
         lib: [ "react", "react-dom" ],
     },
     resolve: {

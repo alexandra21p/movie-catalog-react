@@ -31,25 +31,34 @@ header {
     padding: 10px 0 40px;
 }
 
+.header-border {
+    border-bottom: 1px solid #00838F;
+}
+
 header a {
+    display: block;
+    max-width: 60%;
+    margin: 30px auto 0;
     text-decoration: none;
 }
 
-h1 {
-    padding: 30px 280px 20px;
+h1.movie-list-header,
+h1.homepage-header {
+    /*padding: 30px 280px 20px;*/
     font-weight: 100;
     font-size: 35px;
     cursor: pointer;
     color: #F4F6F0;
 }
 
+
+
 .search-bar {
     max-width: 70%;
     border-radius: 5px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin: 10px auto 0;
+    margin: 50px auto 0;
 }
 
 input.search-input {
@@ -82,20 +91,51 @@ button.search-button:hover {
 }
 
 
-.main-content {
+main.homepage {
     max-width: 60%;
+    margin: 100px auto;
+    text-align: center;
+}
+
+h2.homepage-subtitle {
+    padding: 50px 200px;
+    font-weight: 100;
+    font-size: 25px;
+    color: #9aa3a9;
+    letter-spacing: 0.5px;
+    line-height: 38px;
+}
+
+.movies-link {
+    display: block;
+    margin: 20px auto;
+    padding: 15px 10px;
+    border: 1px solid #00838F;
+    border-radius: 5px;
+    max-width: 300px;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    color: #F4F6F0;
+    font-size: 18px;
+}
+
+.movies-link:hover {
+    background-color: #00838F;
+}
+
+.main-content {
+    max-width: 70%;
     height: 100%;
     margin: 100px auto;
     border-radius: 5px;
-    /*border: 1px solid #cecece;*/
-    /*background-color: #e9ecef;*/
     position: relative;
 }
 
 .movie-row {
     display: flex;
     justify-content: space-between;
-    margin: 0 10px 50px;
+    margin: 0 50px 50px;
 }
 
 .movie-container {
@@ -112,9 +152,9 @@ img.movie-poster {
 }
 
 .movie-details {
-    width: 65%;
+    width: 55%;
     margin: 0 auto;
-    text-align: left;
+    text-align: center;
 }
 
 .movie-details h2.movie-title,
@@ -154,5 +194,180 @@ img.movie-poster {
 
 .loading {
     position: absolute;
+}
 
+
+.movie-page {
+    max-width: 60%;
+    margin: 150px auto;
+    display: flex;
+}
+
+.clearfix {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+img.movie-page-poster {
+    max-width: 400px;
+    height: 500px;
+    outline: 2px;
+    outline: 1px solid #00838F;
+    outline-offset: 13px;
+    margin-top: 30px;
+}
+
+.movie-page-info {
+    width: 100%;
+    margin-left: 50px;
+}
+
+.movie-page-info .movie-info-top {
+    margin-bottom: 15px;
+}
+
+.movie-page-info .movie-info-top:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.movie-page .movie-title {
+    color: #9aa3a9;
+    font-size: 25px;
+    letter-spacing: 1px;
+    font-weight: 100;
+    width: 50%;
+    float: left;
+    padding-top: 15px;
+}
+
+.rating-container {
+    float: right;
+    max-width: 50%;
+}
+
+.rating-container .current-rating {
+    float: left;
+    padding: 8px 20px 8px 0;
+    border-right: 1px solid #00838F;
+}
+
+.rating-container .current-rating span.not-rated {
+    font-size: 20px;
+    padding: 5px 0;
+}
+
+.rating-container .current-rating span {
+    font-size: 30px;
+    display: inline-block;
+    color: #fff;
+    padding-left: 10px;
+    margin-top: 3px;
+}
+
+.rating-container .rate-movie {
+    position: relative;
+    float: left;
+    padding: 8px 0 8px 20px;
+    cursor: pointer;
+}
+
+.rating-container .rate-movie span {
+    color: #F4F6F0;
+    display: inline-block;
+    float: left;
+    width: 40px;
+    padding: 5px 0 0 8px;
+    font-weight: 100;
+}
+
+.rate-movie:focus,
+.rate-popup:focus {
+    outline: 0;
+}
+
+.rate-movie .rate-popup {
+    position: absolute;
+    width: 400px;
+    height: 54px;
+    background-color: #868e95;
+    border: 2px solid #00838F;
+    border-radius: 5px;
+    right: 95px;
+    top: -1px;
+
+}
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: block;
+}
+
+.rating-stars {
+    list-style-type: none;
+    padding: 6px 12px 5px 14px;
+}
+
+.rating-stars li {
+    padding: 5px 4px 5px 0;
+    display: inline-block;
+}
+
+.rating-stars li:first-of-type {
+    padding: 8px 12px 5px 0;
+    margin-right: 13px;
+    border-right: 2px solid #00838F;
+}
+
+.rating-stars li img {
+    max-width: 28px;
+    cursor: pointer;
+}
+
+.rating-stars img.remove-rating-button {
+    max-width: 23px;
+}
+
+.rating-container img {
+    max-width: 35px;
+    float: left;
+}
+
+.movie-page-info-content {
+    margin: 30px 0 0;
+    max-width: 70%;
+}
+
+.movie-page p {
+    color: #F4F6F0;
+    padding: 30px 0 200px;
+    line-height: 25px;
+    font-size: 15px;
+    font-style: italic;
+    font-weight: 100;
+}
+
+.movie-page-info h3 {
+    color: #00838F;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+    padding: 5px 0 2px;
+}
+
+.movie-page-info span {
+    color: #9aa3a9;
+    font-weight: 100;
+    display: inline-block;
+    padding: 0 5px;
+    font-size: 0.9em;
+    cursor: pointer;
+}
+
+.movie-page-info span:hover {
+    color: #F4F6F0;
 }
